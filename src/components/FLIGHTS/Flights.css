@@ -1,0 +1,50 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.Flight-MainSection {
+  margin-top: 20px;
+  height: 40vh;
+  max-width: 100%;
+  background-color: #2f81ed;
+  background-image: linear-gradient(to right, #2f80ed, #56ccf2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.Flight-MainSection p {
+  float: right;
+  color: white;
+  font-weight: 600;
+  font-size: 20px !important;
+}
+
+.Flight-ticket-Box {
+  background-color: white;
+  width: 1200px;
+  height: 140px;
+  border-radius: 10px;
+  /* position: absolute; */
+  top: 70px;
+  z-index: 1;
+}
+.fsearch {
+  display: flex;
+  /* margin-top: 10px; */
+  border-radius: 10px;
+}
+.flight {
+  margin: 15px;
+  color: rgb(32, 32, 32);
+  width: 250px;
+  border-right: 1px solid rgb(140, 139, 139);
+}
+.flight h1 {
+  margin: 0;
+}
+.Flight-MainSection span {
+  font-size: 14px;
+}
