@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Navbar from "../NAVBAR/Navbar";
-import "./Train.css"; // Assuming you have a CSS file for styles
+import "./Bus.css"; // Assuming you have a CSS file for styles
 
-const Train = () => {
+const Bus = () => {
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
   const [departureDate, setDepartureDate] = useState("");
@@ -15,40 +15,37 @@ const Train = () => {
   return (
     <div>
       <Navbar />
-      <div className="Train-MainSection">
-        <div className="caption-train">
-          <img src="https://www.easemytrip.com/images/train-img/train-icon.svg" />
-          <p> Book Train Tickets</p>
-        </div>
-        <div className="Train-ticket-Box">
-          <div className="tsearch">
-            <div className="train">
+      <div className="Bus-MainSection">
+        <div className="caption-bus">Find Your Bus</div>
+        <div className="Bus-ticket-Box">
+          <div className="bsearch">
+            <div className="bus">
               <label className="label" htmlFor="from">
                 From
               </label>
               <input
                 type="text"
                 id="from"
-                className="train-input"
-                placeholder="Enter departure station"
+                className="bus-input"
+                placeholder="Enter departure city"
                 value={from}
                 onChange={(e) => setFrom(e.target.value)}
               />
             </div>
-            <div className="train">
+            <div className="bus">
               <label className="label" htmlFor="to">
                 To
               </label>
               <input
                 type="text"
                 id="to"
-                className="train-input"
-                placeholder="Enter destination station"
+                className="bus-input"
+                placeholder="Enter destination city"
                 value={to}
                 onChange={(e) => setTo(e.target.value)}
               />
             </div>
-            <div className="datepicker-train">
+            <div className="datepicker-bus">
               <label className="label" htmlFor="departureDate">
                 Departure Date
               </label>
@@ -60,21 +57,14 @@ const Train = () => {
                 onChange={(e) => setDepartureDate(e.target.value)}
               />
             </div>
-            <button className="search-button-train" onClick={handleSearch}>
+            <button className="search-button-bus" onClick={handleSearch}>
               Search
             </button>
           </div>
-        </div>
-        <div className="bottom-heading">
-          <img
-            src="https://www.easemytrip.com/images/train-img/IRCTC-logo-nw2.png"
-            className="irctc-logo"
-          />
-          <p>IRCTC Authorized Partner</p>
         </div>
       </div>
     </div>
   );
 };
 
-export default Train;
+export default Bus;
