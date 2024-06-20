@@ -1,13 +1,21 @@
 import React, { useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Modal from "@mui/material/Modal";
 import Login from "../LOGIN/Login";
+import Signup from "../LOGIN/Signup";
 import "./DropDownInside.css";
+
 const DropDownInside = () => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const [isSignup, setIsSignup] = useState(false);
+
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const handleToggle = () => {
+    setIsSignup((prev) => !prev);
+  };
 
   return (
     <div className="main">
@@ -32,7 +40,11 @@ const DropDownInside = () => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Login />
+        {isSignup ? (
+          <Signup handleToggle={handleToggle} closeButton={handleClose} />
+        ) : (
+          <Login handleToggle={handleToggle} closeButton={handleClose} />
+        )}
       </Modal>
     </div>
   );

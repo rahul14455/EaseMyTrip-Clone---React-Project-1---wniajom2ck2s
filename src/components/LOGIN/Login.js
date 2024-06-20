@@ -1,36 +1,34 @@
 import React, { useState } from "react";
 import "./Login.css";
-import { Modal } from "@mui/material";
 import { IoIosClose } from "react-icons/io";
-import Signup from "./Signup";
-const Login = ({ handleClose }) => {
-  const [signup, setSignup] = useState(false);
-  const [data, setdata] = useState({
+
+const Login = ({ closeButton, handleToggle }) => {
+  const [data, setData] = useState({
     username: "",
-    Password: "",
+    password: "",
   });
+
   const { username, password } = data;
-  const ChangeHandler = (e) => {
-    setdata({
+
+  const changeHandler = (e) => {
+    setData({
       ...data,
-      [e.target.name]: [e.target.value],
+      [e.target.name]: e.target.value,
     });
   };
+
   const submitHandler = (e) => {
     e.preventDefault();
     console.log(data);
   };
-  const handleSignup = (e) => {
-    e.stopPropagation();
-    setSignup(true);
-  };
+
   return (
     <div>
       <form onSubmit={submitHandler}>
         <div className="LoginPage">
           <div className="login-heading">
             <h4 className="heading">Login or Create an account</h4>
-            <IoIosClose className="close" onClick={handleClose} />
+            <IoIosClose className="close" onClick={closeButton} />
           </div>
           <div className="login-box">
             <input
@@ -39,7 +37,7 @@ const Login = ({ handleClose }) => {
               className="email-input"
               placeholder="Email address"
               value={username}
-              onChange={ChangeHandler}
+              onChange={changeHandler}
             />
             <br />
             <input
@@ -48,7 +46,7 @@ const Login = ({ handleClose }) => {
               placeholder="Password"
               name="password"
               value={password}
-              onChange={ChangeHandler}
+              onChange={changeHandler}
             />
             <br />
             <button type="submit" className="loginbtns" name="submit">
@@ -56,21 +54,16 @@ const Login = ({ handleClose }) => {
             </button>
           </div>
           <br />
-          <h5 className="create-account" onClick={handleSignup}>
-            Create New Account ?
-          </h5>{" "}
+          <h5 className="create-account" onClick={handleToggle}>
+            Create New Account?
+          </h5>
           <br />
           <p className="para-foot">
-            By logging in , i understand & agree to EasyMyTrip terms of use and
+            By logging in, I understand & agree to EasyMyTrip terms of use and
             privacy policy
           </p>
         </div>
       </form>
-      {
-        <Modal open={signup}>
-          <Signup />
-        </Modal>
-      }
     </div>
   );
 };

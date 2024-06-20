@@ -1,28 +1,37 @@
 import React, { useState } from "react";
 import "./Signup.css";
-const Signup = () => {
+import { IoIosClose } from "react-icons/io";
+
+const Signup = ({ handleToggle, closeButton }) => {
   const [data, setData] = useState({
     fname: "",
     lname: "",
     email: "",
     password: "",
   });
+
   const { fname, lname, email, password } = data;
-  const ChangeHandler = (e) => {
+
+  const changeHandler = (e) => {
     setData({
       ...data,
-      [e.target.name]: [e.target.value],
+      [e.target.name]: e.target.value,
     });
   };
+
   const submitHandler = (e) => {
     e.preventDefault();
     console.log(data);
   };
+
   return (
     <div>
       <form onSubmit={submitHandler}>
         <div className="SignupPage">
-          <h4>SignUp or Create an account</h4> <br />
+          <div className="signup-heading">
+            <h4 className="heading">Login or Create an account</h4>
+            <IoIosClose className="close" onClick={closeButton} />
+          </div>
           <div className="names">
             <input
               type="text"
@@ -30,7 +39,7 @@ const Signup = () => {
               value={fname}
               placeholder="First name"
               className="fname"
-              onChange={ChangeHandler}
+              onChange={changeHandler}
             />
             <input
               type="text"
@@ -38,7 +47,7 @@ const Signup = () => {
               className="lname"
               name="lname"
               value={lname}
-              onChange={ChangeHandler}
+              onChange={changeHandler}
             />
           </div>
           <br />
@@ -48,7 +57,7 @@ const Signup = () => {
             className="email-input"
             name="email"
             value={email}
-            onChange={ChangeHandler}
+            onChange={changeHandler}
           />
           <br />
           <input
@@ -57,7 +66,7 @@ const Signup = () => {
             className="pwd-input"
             name="password"
             value={password}
-            onChange={ChangeHandler}
+            onChange={changeHandler}
           />
           <br />
           <button type="submit" className="signupbtn" name="submit">
