@@ -137,7 +137,7 @@ const Hotels = () => {
                 className="guests-input"
               />
             </div>
-            <button className="search-button">Search Hotels</button>
+            <button className="search-button-hotel">Search Hotels</button>
           </div>
         </div>
       </div>
