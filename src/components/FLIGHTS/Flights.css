@@ -36,19 +36,11 @@ body {
   width: 80%;
   max-width: 1200px;
   border-radius: 10px;
-  padding: 20px;
+  padding: 10px 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.fsearch {
-  display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  width: 100%;
-  gap: 20px;
+  align-items: center;
 }
 
 /* Flight details styling */
@@ -62,10 +54,17 @@ body {
 .label {
   font-size: 14px;
   font-weight: bold;
-  margin-bottom: 5px;
-  display: flex;
-  align-items: center;
-  gap: 5px;
+  color: #999;
+}
+
+h1 {
+  font-size: 24px;
+  margin: 5px 0;
+}
+
+h2 {
+  font-size: 16px;
+  margin: 0;
 }
 
 /* Datepicker styling */
@@ -98,7 +97,7 @@ body {
 
 .travellers-input {
   width: 100%;
-  padding: 15px;
+  padding: 10px;
   border: 1px solid #ddd;
   border-radius: 4px;
   cursor: pointer;
@@ -155,6 +154,7 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
+  margin-top: 10px;
 }
 
 .classes-label {
@@ -189,15 +189,21 @@ body {
 .search-button {
   background-color: #ff6f61;
   color: white;
-  padding: 10px 20px;
+  padding: 15px 30px;
   border: none;
-  border-radius: 4px;
+  border-radius: 0 10px 10px 0;
   cursor: pointer;
   font-size: 16px;
   font-weight: bold;
-  align-self: flex-end;
+  display: flex;
+  align-items: center;
 }
 
 .search-button:hover {
   background-color: #ff5a4a;
+}
+
+.search-container {
+  display: flex;
+  flex: 1;
 }
