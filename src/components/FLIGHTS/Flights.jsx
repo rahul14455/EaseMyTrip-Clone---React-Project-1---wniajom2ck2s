@@ -11,6 +11,7 @@ import "./Flights.css";
 
 const Flights = () => {
   const [selectedDate, setSelectedDate] = useState(null);
+  const [dayOfWeek, setDayOfWeek] = useState("");
   const [travellersVisible, setTravellersVisible] = useState(false);
   const [adults, setAdults] = useState(1);
   const [children, setChildren] = useState(0);
@@ -37,11 +38,15 @@ const Flights = () => {
     setTravellersVisible(false);
   };
 
-  const travellersText = `${adults} Adult${
-    adults !== 1 ? "s" : ""
-  }, ${children} Child${children !== 1 ? "ren" : ""}, ${infants} Infant${
-    infants !== 1 ? "s" : ""
-  }`;
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const day = new Date(date).getDay();
+    setDayOfWeek(days[day]);
+  };
+
+  const totalTravellers = adults + children + infants;
+  const travellersText = `${totalTravellers} Traveller${totalTravellers !== 1 ? "s" : ""}`;
 
   return (
     <div>
@@ -49,7 +54,7 @@ const Flights = () => {
       <div className="Flight-MainSection">
         <p className="caption-flight">Search Lowest Price</p>
         <div className="Flight-ticket-Box">
-          <div className="fsearch">
+          <div className="search-container">
             <div className="flight from">
               <span className="label">
                 <FaPlaneDeparture /> FROM
@@ -64,20 +69,22 @@ const Flights = () => {
               <h1>Bangalore</h1>
               <span>BLR, Kempegowda International Airport India</span>
             </div>
-            <div className="datepicker gap">
+            <div className="datepicker">
               <span className="label">
                 <FaCalendarAlt /> DEPARTURE DATE
               </span>
               <Datepicker
                 selected={selectedDate}
-                onChange={(date) => setSelectedDate(date)}
+                onChange={handleDateChange}
                 className="date-input"
                 dateFormat="dd/MM/yyyy"
                 placeholderText="Select a date"
               />
+              {selectedDate && <span>{dayOfWeek}</span>}
             </div>
             <div className="travellers">
               <div className="travellers-dropdown">
+                <span className="label">TRAVELLERS & CLASS</span>
                 <input
                   type="text"
                   className="travellers-input"
@@ -156,9 +163,10 @@ const Flights = () => {
                   </div>
                 )}
               </div>
+              <span>{travelClass}</span>
             </div>
-            <button className="search-button">Search Flights</button>
           </div>
+          <button className="search-button">SEARCH</button>
         </div>
       </div>
     </div>
