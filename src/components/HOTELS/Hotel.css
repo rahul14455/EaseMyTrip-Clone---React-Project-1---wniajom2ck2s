@@ -12,7 +12,7 @@ body {
 /* Hotel main section styling */
 .Hotel-MainSection {
   margin-top: 20px;
-  height: 50vh;
+  height: 40vh;
   max-width: 100%;
   background-color: #2f81ed;
   background-image: linear-gradient(to right, #2f80ed, #56ccf2);
@@ -57,7 +57,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  /* padding: 10px; */
+  padding: 10px;
 }
 
 /* Label styling */
@@ -86,7 +86,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  /* padding: 10px; */
+  padding: 10px;
 }
 
 /* Guests section styling */
@@ -96,7 +96,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  /* padding: 10px; */
+  padding: 10px;
 }
 
 /* Dropdown form styling */
@@ -181,11 +181,12 @@ body {
 .search-button-hotel {
   background-color: #ff6f61;
   color: white;
-  padding: 11px 20px;
+  padding: 11px 21px;
   border: none;
   /* border-radius: 4px; */
   cursor: pointer;
   font-size: 16px;
   font-weight: bold;
   align-self: flex-end;
+  margin-bottom: 10px;
 }
