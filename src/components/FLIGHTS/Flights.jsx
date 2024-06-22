@@ -40,13 +40,23 @@ const Flights = () => {
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
-    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const days = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
     const day = new Date(date).getDay();
     setDayOfWeek(days[day]);
   };
 
   const totalTravellers = adults + children + infants;
-  const travellersText = `${totalTravellers} Traveller${totalTravellers !== 1 ? "s" : ""}`;
+  const travellersText = `${totalTravellers} Traveller${
+    totalTravellers !== 1 ? "s" : ""
+  }`;
 
   return (
     <div>
@@ -169,6 +179,7 @@ const Flights = () => {
           <button className="search-button">SEARCH</button>
         </div>
       </div>
+      <div className="offers-section"></div>
     </div>
   );
 };

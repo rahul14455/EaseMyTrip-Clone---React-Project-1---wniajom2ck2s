@@ -1,32 +1,67 @@
 import React, { useState } from "react";
 import "./Signup.css";
 import { IoIosClose } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
+
+const navigate = useNavigate();
 
 const Signup = ({ handleToggle, closeButton }) => {
-  const [data, setData] = useState({
-    fname: "",
-    lname: "",
-    email: "",
-    password: "",
-  });
+  const [name, setName] = useState;
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
 
-  const { fname, lname, email, password } = data;
-
-  const changeHandler = (e) => {
-    setData({
-      ...data,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const submitHandler = (e) => {
+  const register = async (e) => {
     e.preventDefault();
-    console.log(data);
-  };
+    if (!name) {
+      return alert("Name is required.");
+    }
+    if (!email) {
+      return alert("Email is required.");
+    }
+    if (!password) {
+      return alert("Password is required.");
+    }
 
+    try {
+      const response = await fetch(
+        "https://academics.newtonschool.co/api/v1/bookingportals/signup",
+        {
+          method: "POST",
+          headers: {
+            projectID: "wniajom2ck2s",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: name,
+            email: email,
+            password: password,
+            appType: "bookingportals",
+          }),
+        }
+      );
+      const data = await response.json();
+      console.log(data);
+      const token = data.token;
+      localStorage.setItem("token", token);
+
+      if (data.token && data.data && data.data.user) {
+        localStorage.setItem("token", data.token);
+        localStorage.setItem(
+          "All-User-Details",
+          JSON.stringify(data.data.user)
+        );
+        navigate("/");
+      } else {
+        alert("Login failed, please check your credentials and try again.");
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+      alert("Login failed, please check console for details.");
+    }
+  };
   return (
     <div>
-      <form onSubmit={submitHandler}>
+      <form onSubmit={register}>
         <div className="SignupPage">
           <div className="signup-heading">
             <h4 className="heading">Login or Create an account</h4>
@@ -35,19 +70,9 @@ const Signup = ({ handleToggle, closeButton }) => {
           <div className="names">
             <input
               type="text"
-              name="fname"
-              value={fname}
-              placeholder="First name"
-              className="fname"
-              onChange={changeHandler}
-            />
-            <input
-              type="text"
-              placeholder="Last name"
-              className="lname"
-              name="lname"
-              value={lname}
-              onChange={changeHandler}
+              placeholder="Full Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
             />
           </div>
           <br />
@@ -57,7 +82,7 @@ const Signup = ({ handleToggle, closeButton }) => {
             className="email-input"
             name="email"
             value={email}
-            onChange={changeHandler}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <br />
           <input
@@ -66,11 +91,16 @@ const Signup = ({ handleToggle, closeButton }) => {
             className="pwd-input"
             name="password"
             value={password}
-            onChange={changeHandler}
+            onChange={(e) => setPassword(e.target.value)}
           />
           <br />
-          <button type="submit" className="signupbtn" name="submit">
-            Continue
+          <button
+            type="submit"
+            className="signupbtn"
+            name="submit"
+            onClick={register}
+          >
+            Register
           </button>
           <br />
           <p className="para-foot">
