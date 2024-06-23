@@ -3,10 +3,11 @@ import { Link, NavLink } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
 import DropDownInside from "./DropDownInside";
 import "./Navbar.css";
+import { useOffersContext } from "../../Context/OffersContext";
 
 export default function Navbar() {
   const [login, setLogin] = useState(false);
-
+  const { handleFilterChange } = useOffersContext();
   function handleAccountOpen() {
     setLogin((prevLogin) => !prevLogin);
   }
@@ -20,16 +21,32 @@ export default function Navbar() {
         />
       </Link>
       <div className="center">
-        <NavLink to="/" className="nolink">
+        <NavLink
+          to="/"
+          className="nolink"
+          onClick={() => handleFilterChange("FLIGHTS")}
+        >
           Flights
         </NavLink>
-        <NavLink to="/Hotel" className="nolink">
+        <NavLink
+          to="/Hotel"
+          className="nolink"
+          onClick={() => handleFilterChange("HOTELS")}
+        >
           Hotels
         </NavLink>
-        <NavLink to="/Train" className="nolink">
+        <NavLink
+          to="/Train"
+          className="nolink"
+          onClick={() => handleFilterChange("RAILS")}
+        >
           Trains
         </NavLink>
-        <NavLink to="/Bus" className="nolink">
+        <NavLink
+          to="/Bus"
+          className="nolink"
+          onClick={() => handleFilterChange("CABS")}
+        >
           Bus
         </NavLink>
       </div>

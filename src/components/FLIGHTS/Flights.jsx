@@ -7,6 +7,7 @@ import {
   FaCalendarAlt,
 } from "react-icons/fa";
 import "./Flights.css";
+import { useOffersContext } from "../../Context/OffersContext";
 
 const Flights = () => {
   const [selectedDate, setSelectedDate] = useState(null);
@@ -16,7 +17,7 @@ const Flights = () => {
   const [children, setChildren] = useState(0);
   const [infants, setInfants] = useState(0);
   const [travelClass, setTravelClass] = useState("Economy");
-  const [offers, setOffers] = useState([]);
+  const { handleFilterChange } = useOffersContext();
 
   const handleAdultsChange = (value) => {
     setAdults((prev) => Math.max(1, prev + value));
@@ -181,10 +182,10 @@ const Flights = () => {
       <div className="offer-caption">
         <h2>Exclusive Offers</h2>
         <ul>
-          <li>BestOffers</li>
-          <li>Flight</li>
-          <li>Hotel</li>
-          <li>Bus</li>
+          <li onClick={() => handleFilterChange("ALL")}>BestOffers</li>
+          <li onClick={() => handleFilterChange("FLIGHTS")}>Flight</li>
+          <li onClick={() => handleFilterChange("HOTELS")}>Hotel</li>
+          <li onClick={() => handleFilterChange("CABS")}>Cab</li>
         </ul>
       </div>
     </div>

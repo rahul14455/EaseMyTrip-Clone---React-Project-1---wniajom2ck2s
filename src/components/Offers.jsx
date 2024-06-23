@@ -4,17 +4,18 @@ import {
   FaRegArrowAltCircleLeft,
 } from "react-icons/fa";
 import "./Offers.css";
+import { useOffersContext } from "../Context/OffersContext";
 
 const Offers = () => {
   const [offers, setOffers] = useState([]);
   const [scrollPosition, setScrollPosition] = useState(0);
   const offersSectionRef = useRef(null);
-
+  const { type } = useOffersContext();
   useEffect(() => {
     const fetchOffers = async () => {
       try {
         const response = await fetch(
-          `https://academics.newtonschool.co/api/v1/bookingportals/offers?filter={"type":"FLIGHTS"}`,
+          `https://academics.newtonschool.co/api/v1/bookingportals/offers?filter={"type":"${type}"}`,
           {
             method: "GET",
             headers: {
@@ -32,7 +33,7 @@ const Offers = () => {
 
     fetchOffers();
     console.log(window.client);
-  }, []);
+  }, [type]);
 
   const handleScrollLeft = () => {
     const newPosition = Math.max(scrollPosition - 1, 0);
