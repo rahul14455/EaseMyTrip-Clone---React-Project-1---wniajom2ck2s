@@ -11,7 +11,7 @@ body {
 
 /* Flight main section styling */
 .Flight-MainSection {
-  margin-top: 20px;
+  margin-top: 10px;
   height: 40vh;
   max-width: 100%;
   background-color: #2f81ed;
@@ -207,4 +207,22 @@ h2 {
 .search-container {
   display: flex;
   flex: 1;
+}
+
+/* offers */
+
+.offer-caption h2 {
+  font-weight: 600;
+  padding: 20px;
+  text-align: center;
+}
+.offer-caption ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 40px;
+  padding: 0 30px;
+  font-size: 20px;
+  font-weight: bold;
 }

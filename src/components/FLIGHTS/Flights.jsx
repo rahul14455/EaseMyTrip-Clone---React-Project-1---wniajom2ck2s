@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Navbar from "../NAVBAR/Navbar";
 import Datepicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import {
@@ -17,6 +16,7 @@ const Flights = () => {
   const [children, setChildren] = useState(0);
   const [infants, setInfants] = useState(0);
   const [travelClass, setTravelClass] = useState("Economy");
+  const [offers, setOffers] = useState([]);
 
   const handleAdultsChange = (value) => {
     setAdults((prev) => Math.max(1, prev + value));
@@ -60,7 +60,6 @@ const Flights = () => {
 
   return (
     <div>
-      <Navbar />
       <div className="Flight-MainSection">
         <p className="caption-flight">Search Lowest Price</p>
         <div className="Flight-ticket-Box">
@@ -179,7 +178,15 @@ const Flights = () => {
           <button className="search-button">SEARCH</button>
         </div>
       </div>
-      <div className="offers-section"></div>
+      <div className="offer-caption">
+        <h2>Exclusive Offers</h2>
+        <ul>
+          <li>BestOffers</li>
+          <li>Flight</li>
+          <li>Hotel</li>
+          <li>Bus</li>
+        </ul>
+      </div>
     </div>
   );
 };

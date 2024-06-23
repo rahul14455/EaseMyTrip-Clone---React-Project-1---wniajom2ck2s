@@ -36,7 +36,6 @@ const Hotels = () => {
 
   return (
     <div>
-      <Navbar />
       <div className="Hotel-MainSection">
         <p className="caption-hotel">Find the Best Hotels</p>
         <div className="Hotel-search-Box">

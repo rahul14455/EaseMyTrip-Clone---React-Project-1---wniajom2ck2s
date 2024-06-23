@@ -14,7 +14,6 @@ const Train = () => {
 
   return (
     <div>
-      <Navbar />
       <div className="Train-MainSection">
         <div className="caption-train">
           <img src="https://www.easemytrip.com/images/train-img/train-icon.svg" />

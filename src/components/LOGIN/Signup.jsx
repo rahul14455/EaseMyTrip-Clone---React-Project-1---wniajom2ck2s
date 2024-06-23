@@ -3,12 +3,11 @@ import "./Signup.css";
 import { IoIosClose } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 
-const navigate = useNavigate();
-
 const Signup = ({ handleToggle, closeButton }) => {
   const [name, setName] = useState;
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const navigate = useNavigate();
 
   const register = async (e) => {
     e.preventDefault();

@@ -14,7 +14,6 @@ const Bus = () => {
 
   return (
     <div>
-      <Navbar />
       <div className="Bus-MainSection">
         <div className="caption-bus">Find Your Bus</div>
         <div className="Bus-ticket-Box">
