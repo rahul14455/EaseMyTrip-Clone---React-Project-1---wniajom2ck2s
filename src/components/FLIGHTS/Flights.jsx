@@ -64,7 +64,7 @@ const Flights = () => {
     const flightList = async () => {
       try {
         const response = await fetch(
-          'https://academics.newtonschool.co/api/v1/bookingportals/airport?search={"city":"enter_a_city"}',
+          "https://academics.newtonschool.co/api/v1/bookingportals/airport",
 
           {
             method: "GET",
@@ -75,15 +75,15 @@ const Flights = () => {
           }
         );
         const jsonResponse = await response.json();
-        console.log(response.data);
-        setData(jsonResponse.data?.list || []);
+        console.log(jsonResponse.data);
+        setData(jsonResponse.data?.airports || []);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
+
     flightList();
-    console.log(window.client);
-  }, [city]);
+  }, []);
 
   return (
     <div>
