@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Datepicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import {
@@ -18,6 +18,8 @@ const Flights = () => {
   const [infants, setInfants] = useState(0);
   const [travelClass, setTravelClass] = useState("Economy");
   const { handleFilterChange } = useOffersContext();
+  const [data, setData] = useState({}); // initialize empty data state
+  const [city, setCity] = useState(""); // initialize city input state
 
   const handleAdultsChange = (value) => {
     setAdults((prev) => Math.max(1, prev + value));
@@ -58,6 +60,30 @@ const Flights = () => {
   const travellersText = `${totalTravellers} Traveller${
     totalTravellers !== 1 ? "s" : ""
   }`;
+  useEffect(() => {
+    const flightList = async () => {
+      try {
+        const response = await fetch(
+          'https://academics.newtonschool.co/api/v1/bookingportals/airport?search={"city":"enter_a_city"}',
+
+          {
+            method: "GET",
+            headers: {
+              projectID: "wniajom2ck2s",
+              authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        );
+        const jsonResponse = await response.json();
+        console.log(response.data);
+        setData(jsonResponse.data?.list || []);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    flightList();
+    console.log(window.client);
+  }, [city]);
 
   return (
     <div>
